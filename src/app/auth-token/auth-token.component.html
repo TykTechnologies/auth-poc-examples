@@ -1,0 +1,20 @@
+<h2>Make a Auth Token Get request</h2>
+<ul>
+    <label>URL: </label>
+    <input type="text" placeholder="tyk url" 
+    [formControl]="requestUrl" style="width:250px"
+    >
+
+    <br/>
+
+    <label>Auth Token: </label>
+    <input type="text" placeholder="" 
+    [formControl]="authToken" style="width:250px"
+    >
+    <br/>
+    
+    <button (click)="handleRequest()" type="submit">Send</button>
+
+    <pre [innerHTML]="responsePayload | prettyjson:4"></pre>
+  
+</ul>

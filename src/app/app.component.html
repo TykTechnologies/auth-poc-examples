@@ -9,12 +9,17 @@
 <h2>Auth Type:</h2>
 <select [(ngModel)]="authSelect">
     <option value="keyless">Keyless - GET</option>
-    <option value="option-2">Auth token - GET</option>
+    <option value="app-auth-token">Auth token - GET</option>
     <option value="option-3">OpenID Connect - GET</option>
   </select>
 
   <section *ngIf="authSelect === 'keyless'">
     <app-keyless></app-keyless>
   </section>
+
+  <section *ngIf="authSelect === 'app-auth-token'">
+    <app-auth-token></app-auth-token>
+  </section>
+  
 
 <router-outlet></router-outlet>

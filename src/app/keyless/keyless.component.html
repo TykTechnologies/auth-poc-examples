@@ -3,11 +3,8 @@
   <input type="text" placeholder="tyk url" 
   [formControl]="requestUrl" style="width:250px"
   >
-  <button (click)="appService.clicker(requestUrl)" type="submit">Send</button>
+  <button (click)="handleRequest()" type="submit">Send</button>
   
-
-  <!-- <div *ngIf="appService.clickMessage"></div> -->
-    <pre [innerHTML]="appService.clickMessage | prettyjson:4"></pre>
-  <!-- </div> -->
+  <pre [innerHTML]="responsePayload | prettyjson:4"></pre>
   
 </ul>

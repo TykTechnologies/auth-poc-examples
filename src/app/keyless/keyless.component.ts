@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AppService } from '../app.service';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-keyless',
@@ -9,8 +9,22 @@ import { FormControl } from '@angular/forms';
 })
 export class KeylessComponent {
 
-  constructor(private appService: AppService) { }
-  
+  constructor(private http: HttpClient) { }  
+  responsePayload = undefined;
   requestUrl = new FormControl('httpbin.org/get');
+
+  handleRequest() {
+    var requestUrl = this.requestUrl.value;
+    this.responsePayload = undefined
+    if (!requestUrl.includes("://")) {
+        requestUrl = "http://" + requestUrl;
+    }
+    return this.http.get(requestUrl).subscribe((data) => {
+        this.responsePayload = data
+      }, 
+      err => {
+        this.responsePayload = err
+      })
+  }
 
 }
