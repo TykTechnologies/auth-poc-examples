@@ -1,12 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
 <div style="text-align:center">
-  <h1>
-    POC Playground
-  </h1>
-</div>
-<h2>Make a GET request</h2>
-<ul>
-  <input type="text" [formControl]="favoriteColorControl">
-</ul>
+    <h1>
+      POC Playground
+    </h1>
+  </div>
+
+<h2>Auth Type:</h2>
+<select [(ngModel)]="authSelect">
+    <option value="keyless">Keyless - GET</option>
+    <option value="option-2">Auth token - GET</option>
+    <option value="option-3">OpenID Connect - GET</option>
+  </select>
+
+  <section *ngIf="authSelect === 'keyless'">
+    <app-keyless></app-keyless>
+  </section>
 
 <router-outlet></router-outlet>

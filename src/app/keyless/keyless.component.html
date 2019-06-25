@@ -1,0 +1,13 @@
+<h2>Make a KEYLESS Get request</h2>
+<ul>
+  <input type="text" placeholder="tyk url" 
+  [formControl]="requestUrl" style="width:250px"
+  >
+  <button (click)="appService.clicker(requestUrl)" type="submit">Send</button>
+  
+
+  <!-- <div *ngIf="appService.clickMessage"></div> -->
+    <pre [innerHTML]="appService.clickMessage | prettyjson:4"></pre>
+  <!-- </div> -->
+  
+</ul>
