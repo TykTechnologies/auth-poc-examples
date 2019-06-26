@@ -1,5 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
 <div style="text-align:center">
     <h1>
       POC Playground
@@ -9,17 +7,20 @@
 <h2>Auth Type:</h2>
 <select [(ngModel)]="authSelect">
     <option value="keyless">Keyless - GET</option>
-    <option value="app-auth-token">Auth token - GET</option>
-    <option value="option-3">OpenID Connect - GET</option>
+    <option value="auth-token">Auth token - GET</option>
+    <option value="openid">OpenID Connect - GET</option>
   </select>
 
   <section *ngIf="authSelect === 'keyless'">
     <app-keyless></app-keyless>
   </section>
 
-  <section *ngIf="authSelect === 'app-auth-token'">
+  <section *ngIf="authSelect === 'auth-token'">
     <app-auth-token></app-auth-token>
   </section>
-  
+
+  <section *ngIf="authSelect === 'openid'">
+    <app-openid></app-openid>
+  </section>
 
 <router-outlet></router-outlet>

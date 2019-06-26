@@ -1,0 +1,23 @@
+<br/><br/>
+
+<button (click)="discover()">Get Token</button>
+
+<br/>
+Auth Token: <textarea type="text" value={{token}} style='width:400px;height:125px'> </textarea><br/>
+<br/>
+
+<section *ngIf="true" style="margin-top:50px">
+    Welcome, {{claims?.preferred_username}}!
+    <button  (click)="logout()">Logout</button>
+    <br/>
+    <ul>
+        <input type="text" placeholder="tyk url" 
+        [formControl]="requestUrl" style="width:250px"
+        >
+        <button (click)="handleRequest()" type="submit">Send</button>
+        
+        <pre [innerHTML]="responsePayload | prettyjson:4"></pre>
+        
+    </ul>
+
+</section>
