@@ -8,9 +8,10 @@ This POC was made so you could test Tyk's reverse proxying with different authen
 3. Go to `http://localhost:4200` to visit the UI
 
 ## CORS
-You may run into CORS issues while doing the various auth types.  You can either allow CORS in your backend servers or download a browser extension to allow CORS.  With Tyk, 
+You may run into CORS issues while doing the various auth types.  You can either allow CORS in your backend servers or download a browser extension to allow CORS.
 
-you can go into the endpoint designer -> Advanced Options -> CORS Options -> Options pass through = TRUE
+Simplest solution With Tyk is to do the following:
+Go into the endpoint designer -> Advanced Options -> CORS Options -> Options pass through = TRUE
 Tyk will let Options go through to downstream which will tell our browsers that everything is fine.
 
 
