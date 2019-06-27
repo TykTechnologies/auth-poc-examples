@@ -6,7 +6,7 @@
 Auth Token: <textarea type="text" value={{token}} style='width:400px;height:125px'> </textarea><br/>
 <br/>
 
-<section *ngIf="true" style="margin-top:50px">
+<section *ngIf="token" style="margin-top:50px">
     Welcome, {{claims?.preferred_username}}!
     <button  (click)="logout()">Logout</button>
     <br/>

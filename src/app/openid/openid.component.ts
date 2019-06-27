@@ -12,11 +12,11 @@ import { Observable } from 'rxjs';
 })
 export class OpenidComponent {
   
-  get token() { return this.oauthService.getAccessToken(); }
+  get token() { return this.oauthService.getIdToken(); }
   get claims() { return this.oauthService.getIdentityClaims(); }
 
   constructor(private route: ActivatedRoute, private oauthService: OAuthService, private http: HttpClient) {
-    // Configs
+    // Configs - EDIT These
     const config = new AuthConfig();
     config.issuer = 'https://keycloak.do.poc.tyk.technology/auth/realms/tyk';
     config.clientId = 'tyk-client';
@@ -32,18 +32,15 @@ export class OpenidComponent {
     this.oauthService.tryLogin();
    }
 
-   ngOnInit(): void {
-     console.log(1+1)
-    
-   }
-
   handleRequest() {
     var requestUrl = this.requestUrl.value;
     this.responsePayload = undefined
     if (!requestUrl.includes("://")) {
         requestUrl = "http://" + requestUrl;
     }
-    return this.http.get(requestUrl, {headers: this.getHeaders()}).subscribe((data) => {
+
+    const headers = { headers: {Authorization: 'Bearer ' + this.token}}
+    this.http.get(requestUrl, headers).subscribe((data) => {
         this.responsePayload = data
       }, 
       err => {
@@ -52,7 +49,7 @@ export class OpenidComponent {
   }
 
   getHeaders(): HttpHeaders {
-    return new HttpHeaders().set('Authorization', 'Bearer ' + this.oauthService.authorizationHeader());
+    return new HttpHeaders().set('Authorization', this.oauthService.authorizationHeader());
   }
 
   discover() {
