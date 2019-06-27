@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { JwksValidationHandler, OAuthService, AuthConfig, OAuthErrorEvent } from 'angular-oauth2-oidc';
+import { OAuthService, AuthConfig, OAuthErrorEvent } from 'angular-oauth2-oidc';
 import { FormControl } from '@angular/forms';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-openid',

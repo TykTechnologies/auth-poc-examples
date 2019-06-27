@@ -7,7 +7,7 @@ This POC was made so you could test Tyk's reverse proxying with different authen
 2. Start server via `ng serve` or `npm start`
 3. Go to `http://localhost:4200` to visit the UI
 
-# CORS
+## CORS
 You may run into CORS issues while doing the various auth types.  You can either CORS to be acceptable in your backend servers or download a browser extension to allow CORS
 
 ## Auth Types
@@ -16,11 +16,9 @@ I used `angular-oauth2-oidc` to integrate OIDC with Angular.  Using the OIDC spe
 Clicking "Login" will redirect the user to the login page, and upon success will redirect back to the app where they'll be authenticated. 
 
 You will need to edit the `Config` section in `openid.component.ts` to integrate with your Auth Provider of choice.  I used Keycloak.
-
-# Keycloak
+##### Keycloak
 I used Keycloak for OIDC Auth.  Make sure to create a Realm, Client, User, and allow "Implicit Auth" in Keycloak.
-
-# Integration With Tyk
+##### Integration With Tyk
 In your API Designer, under `Authentication Mode`, Select `Open ID Connect`. Add your issuer.  For me it was `https://{my-keycloak-host}/auth/realms/{realm-name}`
 Fill in your client-id with whatever the Client in Keycloak.  Finally, you must enter a Policy that grants access to this particular API.
 
