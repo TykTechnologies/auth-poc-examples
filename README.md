@@ -1,31 +1,40 @@
-# auth-poc-examples
-Integrating different auth types right in the UI
-
+# Auth Integration with Tyk - POC
+This POC was made so you could test Tyk's reverse proxying with different authentication types in a UI.
 
 # Frontend
 
+1. install dependencies via `npm install`
+2. Start server via `ng serve` or `npm start`
+3. Go to `http://localhost:4200` to visit the UI
+
+# CORS
+You may run into CORS issues while doing the various auth types.  You can either CORS to be acceptable in your backend servers or download a browser extension to allow CORS
+
+## Auth Types
+### Open ID Connect (OIDC)
+I used `angular-oauth2-oidc` to integrate OIDC with Angular.  Using the OIDC spec, it will take a discovery document URL and then do the rest.  
+Clicking "Login" will redirect the user to the login page, and upon success will redirect back to the app where they'll be authenticated. 
+
+You will need to edit the `Config` section in `openid.component.ts` to integrate with your Auth Provider of choice.  I used Keycloak.
+
+# Keycloak
+I used Keycloak for OIDC Auth.  Make sure to create a Realm, Client, User, and allow "Implicit Auth" in Keycloak.
+
+# Integration With Tyk
+In your API Designer, under `Authentication Mode`, Select `Open ID Connect`. Add your issuer.  For me it was `https://{my-keycloak-host}/auth/realms/{realm-name}`
+Fill in your client-id with whatever the Client in Keycloak.  Finally, you must enter a Policy that grants access to this particular API.
+
+### Auth Token
+Enter your Tyk reverse proxy URI that is being protected by an auth-token.  Finally, enter your Auth Token.
+The client will inject the token into a header called `Authorization`.  If you've changed this in the API definition, you'll need to change this in the Angular client.
+
+## Dev
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.4.
 
-## Development server
-
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
