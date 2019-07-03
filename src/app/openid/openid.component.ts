@@ -26,7 +26,7 @@ export class OpenidComponent {
     // For debugging:
     oauthService.events.subscribe(e => e instanceof OAuthErrorEvent ? console.error(e) : console.warn(e));
 
-    // Load the shit
+    // Load the info and any relevant metadata (token?)
     this.oauthService.loadDiscoveryDocument();
     this.oauthService.tryLogin();
    }
