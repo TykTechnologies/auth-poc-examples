@@ -19,6 +19,7 @@ export class OpenidComponent {
     const config = new AuthConfig();
     config.issuer = 'https://keycloak.do.poc.tyk.technology/auth/realms/tyk';
     config.clientId = 'tyk-client';
+    // Leave these alone (usually)
     config.redirectUri = window.location.origin;    
     config.scope = 'openid profile email';
     oauthService.configure(config);
