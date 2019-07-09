@@ -1,5 +1,5 @@
 # Auth Integration with Tyk - POC
-This POC was made so you could test Tyk's reverse proxying with different authentication types in a UI.
+This POC was made so you could test Tyk's integration with different authentication types in a UI, such as OIDC, Bearer Token, etc.
 
 # Frontend
 
