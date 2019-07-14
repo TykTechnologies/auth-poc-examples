@@ -12,7 +12,9 @@ You may run into CORS issues while doing the various auth types.  You can either
 
 Simplest solution With Tyk is to do the following:
 
-Go into the endpoint designer -> Advanced Options -> CORS Options -> Options pass through = TRUE
+Go into the endpoint designer -> Advanced Options -> CORS Options -> 
+Enable CORS = TRUE
+Options pass through = TRUE
 
 Tyk will let Options go through to downstream which will tell our browsers that everything is fine.
 

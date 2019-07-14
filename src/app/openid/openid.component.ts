@@ -48,10 +48,6 @@ export class OpenidComponent {
       })
   }
 
-  getHeaders(): HttpHeaders {
-    return new HttpHeaders().set('Authorization', this.oauthService.authorizationHeader());
-  }
-
   discover() {
     this.oauthService.loadDiscoveryDocumentAndLogin();
   }
