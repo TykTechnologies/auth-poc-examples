@@ -21,8 +21,8 @@ Tyk will let Options go through to downstream which will tell our browsers that 
 
 
 ## Auth Types
-### Open ID Connect (OIDC)
-I used `angular-oauth2-oidc` to integrate OIDC with Angular.  Using the OIDC spec, you need to provide the discovery document URL in the config, and the client will do the rest.  
+### Open ID Connect (OIDC) (Implicit Flow)
+This package uses `angular-oauth2-oidc` to integrate OIDC with Angular.  Following the OIDC spec, you need to provide the discovery document URL in the config, and the client will do the rest.
 
 Clicking "Login" will redirect the user to the login page, and upon success will redirect back to the app where they'll be authenticated. 
 You should now see the Auth Token field filled in.  You are ready to make API requests from the client side.
@@ -31,14 +31,14 @@ The client will inject an `Authorization` header with `Bearer {id-token}` as the
 You will need to edit the `Config` section in `openid.component.ts` to integrate with your Auth Provider of choice.  I used Keycloak.
 
 ##### Keycloak
-I used Keycloak for OIDC Auth.  Make sure to create a Realm, Client, User, and allow "Implicit Auth" in Keycloak.
+This frontend uses Keycloak for OIDC Auth.  In Keycloak, make sure to create a Realm, Client, User, and allow "Implicit Auth" in Keycloak.
 ##### Integration With Tyk
 In the API Designer, under `Authentication Mode`, Select `Open ID Connect`. Add your issuer.  For me it was `https://{my-keycloak-host}/auth/realms/{realm-name}`
 Fill in your client-id with whatever the Client in Keycloak.  Finally, you must enter a Policy that grants access to this particular API.
 
 ### Auth Token
 Enter your Tyk reverse proxy URI that is being protected by an auth-token.  Finally, enter your Auth Token.
-The client will inject the token into a header called `Authorization`.  If you've changed this in the API definition, you'll need to change this in the Angular client.
+The client will inject the token into a header called `Authorization`.  If you've changed this in the API definition, you'll need to change this in the frontend code also.
 
 ## Dev
 
