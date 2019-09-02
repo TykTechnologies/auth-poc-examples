@@ -1,6 +1,13 @@
 # Auth Integration with Tyk - POC
 This POC was made so you could test Tyk's integration with different authentication types in a UI, such as OIDC, Bearer Token, etc.
 
+# Todos
+- [x] Basic Auth
+- [x] OIDC 
+- [ ] oauth 2.0
+- [ ] Make UI look nicer
+- [ ] Login page
+
 # Frontend
 
 1. install dependencies via `npm install`
