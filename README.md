@@ -1,18 +1,12 @@
 # Auth Integration with Tyk - POC
 This POC was made so you could test Tyk's integration with different authentication types in a UI, such as OIDC, Bearer Token, etc.
 
-# Todos
+## Todos
 - [x] Basic Auth
 - [x] OIDC 
 - [ ] oauth 2.0
 - [ ] Make UI look nicer
 - [ ] Login page
-
-# Frontend
-
-1. install dependencies via `npm install`
-2. Start server via `ng serve` or `npm start`
-3. Go to `http://localhost:4200` to visit the UI
 
 ## CORS
 You may run into CORS issues while doing the various auth types.  You can either allow CORS in your backend servers or download a browser extension to allow CORS.
@@ -47,6 +41,13 @@ Enter your Tyk reverse proxy URI that is being protected by an auth-token.  Fina
 The client will inject the token into a header called `Authorization`.  If you've changed this in the API definition, you'll need to change this in the Angular client.
 
 ## Dev
+
+### Running from Source
+
+1. install dependencies via `npm install`
+2. Start server via `ng serve` or `npm start`
+3. Go to `http://localhost:4200` to visit the UI
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.4.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
